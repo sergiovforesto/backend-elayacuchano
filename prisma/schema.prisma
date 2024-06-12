@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  user
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  lastName  String
+  email     String   @unique
+  password  String
+  role      Role     @default(user)
+  token     String?  @unique
+  isAuth    Boolean  @default(false)
+  isActive  Boolean  @default(false)
+  inSession Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Post     Post[]
+  Comments Comments[]
+  Profile  Profile?
+  Likes    Likes[]
+}
+
+model Profile {
+  id        String  @id @default(uuid())
+  bio       String?
+  country   String?
+  education String?
+  image     String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+model Post {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+  Comments    Comments[]
+  Likes       Likes[]
+  Images      Images[]
+}
+
+model Images {
+  id  String @id @default(uuid())
+  url String
+
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+}
+
+model Comments {
+  id        String   @id @default(uuid())
+  content   String?
+  isHidden  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+}
+
+model Likes {
+  id        String  @id @default(uuid())
+  likes     Int     @default(0)
+  isClicked Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
