@@ -38,18 +38,16 @@ export const sendEmailRegister = async (data: Data) => {
                         Gracias por registrarte en ElAyacuchano
                     </p>
 
-                    <p
-
-                    >
+                    <strong>
                         Tu cuenta esta casi lista. Continua con el siguente link:
-    
+
                         <a
                             style="font-size:14px; color: #1574FF; font-family: sans-serif; font-weight: normal"
                             href="${process.env.FRONTEND_URL}/confirm/${token}">Click here
                         </a>
-                    </p>
-    
-    
+                    </strong>
+
+
                     <p style="font-size:12px; color:#FF495C; font-family: sans-serif; font-weight: semibold">
                     <span style="color: #444444;">Nota:</span> 
                     si no creaste esta cuenta, por favor no des click en el link</p>
