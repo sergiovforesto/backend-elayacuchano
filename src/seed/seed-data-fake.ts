@@ -8,7 +8,7 @@ interface SeedUser {
     role: 'admin' | 'user';
     token?: string;
     isAuth?: boolean;
-    isBlocked?: boolean;
+    isActive?: boolean;
 }
 
 
@@ -34,6 +34,8 @@ export const initialData: SeedData = {
             email: 'sergiovforesto@gmail.com',
             password: bcrypjs.hashSync('123456', 10),
             role: 'admin',
+            isActive: true,
+            isAuth: true
 
         },
 
@@ -43,6 +45,8 @@ export const initialData: SeedData = {
             email: 'luisbaloa@gmail.com',
             password: bcrypjs.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
 
         },
 
@@ -52,6 +56,8 @@ export const initialData: SeedData = {
             email: 'roberto@gmail.com',
             password: bcrypjs.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
 
         },
 
@@ -61,6 +67,8 @@ export const initialData: SeedData = {
             email: 'mikelauren@gmail.com',
             password: bcrypjs.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
 
         },
     ],
