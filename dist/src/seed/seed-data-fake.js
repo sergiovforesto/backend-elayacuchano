@@ -13,6 +13,8 @@ exports.initialData = {
             email: 'sergiovforesto@gmail.com',
             password: bcryptjs_1.default.hashSync('123456', 10),
             role: 'admin',
+            isActive: true,
+            isAuth: true
         },
         {
             name: 'Luis',
@@ -20,6 +22,8 @@ exports.initialData = {
             email: 'luisbaloa@gmail.com',
             password: bcryptjs_1.default.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
         },
         {
             name: 'roberto',
@@ -27,6 +31,8 @@ exports.initialData = {
             email: 'roberto@gmail.com',
             password: bcryptjs_1.default.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
         },
         {
             name: 'Mike',
@@ -34,6 +40,8 @@ exports.initialData = {
             email: 'mikelauren@gmail.com',
             password: bcryptjs_1.default.hashSync('123456', 10),
             role: 'user',
+            isActive: true,
+            isAuth: true
         },
     ],
     posts: [
