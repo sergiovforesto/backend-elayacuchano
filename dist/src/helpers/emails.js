@@ -19,32 +19,27 @@ const sendEmailRegister = async (data) => {
     const infoEmail = await transport.sendMail({
         from: 'El ayacuchano - <account@elayacuchano.com>',
         to: email,
-        subject: "Confirma tu cuenta para continuar", // asunto
-        text: "El ayacuchano", // plain text body
+        subject: "Confirma tu cuenta para continuar",
+        text: "El ayacuchano",
         html: `
-            <div>
-                <div>
-                    <p>
-                        Bienvenido!  
-                        <span style="color: #1574FF; font-size: 14px">${name}!</span>
-                        Gracias por registrarte en ElAyacuchano
-                    </p>
+            <div style="font-family: system-ui;">
+                <h1> Bienvenido! </h1>
+                <span style="font-size: 18px; text-transform: uppercase; font-weight: bold;">Hola </span>
+                <span style="color: #1574FF; font-size: 18px; text-transform: uppercase; font-weight: bold;">${name}!</span>
+                <span>Gracias por registrarte en El Ayacuchano</span>
 
-                    <strong>
-                        Tu cuenta esta casi lista. Continua con el siguente link:
+                <p> 
+                    Tu cuenta esta casi lista, continúa con el siguente link:
+                </p>
 
-                        <a
-                            style="font-size:14px; color: #1574FF; font-family: sans-serif; font-weight: normal"
-                            href="${process.env.FRONTEND_URL}/confirm/${token}">Click here
-                        </a>
-                    </strong>
-
-
-                    <p style="font-size:12px; color:#FF495C; font-family: sans-serif; font-weight: semibold">
-                    <span style="color: #444444;">Nota:</span> 
-                    si no creaste esta cuenta, por favor no des click en el link</p>
-                </div>
-
+                <a
+                    style="font-size: 12px; color: #fff; font-weight: 500; background-color: #2563EB; text-decoration: none; padding: 6px 10px; border-radius: 5px;"
+                    href="${process.env.FRONTEND_URL}/confirm/${token}">Haz click aquí
+                </a>
+                    
+                <p style="font-size:14px; color:#FF495C; font-weight: 500;">
+                <span style="color: #444444;">Nota:</span> 
+                si no creaste esta cuenta, por favor no des click en el link</p>
             </div>
         `
     });
@@ -69,25 +64,20 @@ const sendEmailForgotPassword = async (data) => {
         text: "Resetea tu contraseña en el ayacuchano",
         html: `
 
-        <div
-        >
+        <div style="font-family: system-ui;">
             <div>
+                <span style="font-size: 18px; font-weight: bold; text-transform: uppercase;">Hola </span>
+                <span style="color: #1574FF; font-size: 18px; font-weight: bold; text-transform: uppercase;">${name}!</span>
+                <span>Sigue los pasos para cambiar tu contraseña</span>
+
                 <p>
-                    Hola
-                    <span style="color: #1574FF; font-size: 14px">${name}!</span>
-                    Sigue los pasos para cambiar tu contraseña
-                </p>
-
-                <p
-                >
                     Cambia tu contraseña en el siguiente link:
-
-                    <a
-                        style="font-size:14px; color: #1574FF; font-family: sans-serif; font-weight: normal"
-                        href="${process.env.FRONTEND_URL}/new-password/${token}">
-                        Cambia tu contraseña aqui
-                    </a>
                 </p>
+                <a
+                    style="font-size:14px; color: #1574FF; font-family: sans-serif; font-weight: normal"
+                    href="${process.env.FRONTEND_URL}/new-password/${token}">
+                    Cambia tu contraseña aqui
+                </a>
 
 
                 <p style="font-size:12px; color:#FF495C; font-family: sans-serif; font-weight: semibold">
