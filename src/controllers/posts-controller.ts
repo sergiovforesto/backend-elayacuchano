@@ -280,6 +280,7 @@ const get_all_post = async (req: Request, res: Response) => {
                 Likes: { select: { id: true, userId: true, postId: true, likes: true, isClicked: true } },
                 author: {
                     select: {
+                        inSession: true,
                         Profile: {
                             select: {
                                 image: true
