@@ -34,7 +34,7 @@ const create_post = async (req: Request, res: Response) => {
 
         const imagePromises = imageUrl.map(async (image) => {
             // Sube la imagen a Cloudinary y obtén la URL
-            const result = await cloudinary.uploader.upload(image.path, { folder: 'ayacuchano' });
+            const result = await cloudinary.uploader.upload(image.path, { folder: 'ayacuchano', format: 'auto' });
             const imageUrl = result.secure_url;
 
             // Crea un registro de imagen en la base de datos con la URL de la imagen

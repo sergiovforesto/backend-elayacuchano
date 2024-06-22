@@ -32,7 +32,7 @@ const create_profile = async (req: Request, res: Response) => {
 
     try {
         if (file) {
-            const result = await cloudinary.uploader.upload(file.path, { folder: 'ayacuchano/profiles' });
+            const result = await cloudinary.uploader.upload(file.path, { folder: 'ayacuchano/profiles', format: 'auto' });
             const imageUrl = result.secure_url;
 
             const my_bio: Profile = await prisma.profile.create({
